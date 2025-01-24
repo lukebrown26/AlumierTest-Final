@@ -16,6 +16,7 @@ Then head to the en locale and add under products product add to the top
 "discount_multiple": "Up to {{ amount }}% Off",
 Then head to settings/custom data/products and add a new metafield called Show Sale Tag and set it to be true or false.
 Finally head to your product section and insert {% include 'sale-tag' %} where you would like the sale tag to show this may need additional styling and include could be changed to render depending on theme version here
+The metafield here will allow you to hide the sale tag if you want to like if its a premium product that you want to show a slash through price but not scream about how much it has off! It will show unless you set the metafield to false.
 
 
 STEP 2
