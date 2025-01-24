@@ -22,7 +22,6 @@ STEP 2
 
 Open the folder in VSCode and navigate to the folder in the terminal
 Run npm init -y and npm install shopify-api-node dotenv
-Rename the env file and add a . to the start of the name
 Add your Access Token and Shopify Store URL to this file as well which you can access from developing an app in the backend of Shopify
 You can change the date after the > on line 13 to select orders from after the date specified and change the product id at the bottom for the one you want to filter by
 Run node fetchOrders.js
