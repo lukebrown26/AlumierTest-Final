@@ -1,0 +1,40 @@
+{% comment %}
+  Renders a sale tag showing the exact percentage off
+{% endcomment %}
+{%- liquid
+  assign on_sale = false
+
+  if current_variant.compare_at_price > current_variant.price
+    assign on_sale = true
+  endif
+  assign has_variants = false
+  if product.variants.size > 1
+    assign has_variants = true
+  endif
+-%}
+{% comment %}
+  This will check if the product is actually on sale and will check if we have tagged with the metafield false as we don't want to show the sale sticker on that specific product, if the metafield is empty it will show for ease of use
+{% endcomment %}
+{%- if on_sale and product.metafields.custom.show_sale_tag != false -%}
+  <span class="ProductTag-Sale">
+    {%- assign discount_amount = product.compare_at_price
+      | minus: product.price
+      | times: 100.0
+      | divided_by: product.compare_at_price
+      | round
+    -%}
+
+    {%- if has_variants -%}
+      {{- 'products.product.discount_multiple' | t: amount: discount_amount -}}
+    {%- else -%}
+      {{- 'products.product.discount' | t: amount: discount_amount -}}
+    {%- endif -%}
+  </span>
+{%- endif -%}
+
+{% style %}
+  .ProductTag-Sale {
+    color: #ea0606;
+    text-transform: Uppercase;
+  }
+{% endstyle %}
